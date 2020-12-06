@@ -1,0 +1,708 @@
+# computer-assignment-II
+PROGRAMS
+1.	Write a C program to count number of digits in a number.
+#include <stdio.h>
+
+void main()
+{
+   int num,count=0;
+   printf("TO FIND NUMBER OF DIGITS IN NUMBER\n");
+   printf("------------------------------------\n");
+   printf("enter the required number:\n");
+   scanf("%d",&num);
+   while(num!=0)
+   {
+       num/=10;
+       ++count;
+   }
+   printf("number of digits are:%d\n",count);
+   
+}
+2.	Write a C program to swap first and last digits of a number.
+#include <stdio.h>
+
+void main()
+{
+    int num,fn,ln;
+    printf("SWAP FIRST AND LAST DIGIT OF A NUMBER\n");
+    printf("--------------------------------------\n");
+    printf("enter the required number:\n");
+    scanf("%d",&num);
+    ln=num%10;
+    printf("the last digit=%d\n",ln);
+    fn=num;
+    while(num>=10)
+    {
+        num/=10;
+    }
+    fn=num;
+    printf("the first digit=%d\n",fn);
+    fn=fn+ln;
+    ln=fn-ln;
+    fn=fn-ln;
+    printf("swapped numbers\n");
+    printf("firstdigit=%d lastdigit=%d",fn,ln);
+    
+}
+
+3.	Write a C program to find frequency of each digit in a given integer.
+#include <stdio.h>
+
+void main()
+{
+    long long num;
+    int freq[10],lastdigit;
+    printf("enter the required number:\n");
+    scanf("%lld",&num);
+    for(int i=0;i<10;i++)
+    {
+        freq[i]=0;
+    }
+    while(num!=0)
+    {
+        lastdigit=num%10;
+        num/=10;
+        freq[lastdigit]++;
+    }
+    printf("frequency of each digit of number =\n",num);
+    for(int i=0;i<10;i++)
+    {
+        printf("frequency of %d=%d\n",i,freq[i]);
+    }
+   
+ 
+}
+4.	Write a C program to enter a number and print it in words. 
+#include <stdio.h>
+
+void main()
+{
+    int num,digit;
+    printf("enter any number:");
+    scanf("%d",&num);
+    while(num!=0)
+    {
+        digit=(digit*10)+num%10;
+        num/=10;
+    }
+    
+    while(digit!=0)
+    {
+        switch(digit%10)
+        {
+            
+            case 0:
+            printf("zero");
+            break;
+            case 1:
+            printf("one");
+            break;
+            case 2:
+            printf("two");
+            break;
+            case 3:
+            printf("three");
+            break;
+            case 4:
+            printf("four");
+            break;
+            case 5:
+            printf("five");
+            break;
+            case 6:
+            printf("six");
+            break;
+            case 7:
+            printf("seven");
+            break;
+            case 8:
+            printf("eight");
+            break;
+            case 9:
+            printf("nine");
+            break;
+        
+         }
+         digit=digit/10;
+    }
+}
+5.	Write a C program to print all ASCII character with their values.
+    #include <stdio.h>
+
+int main()
+{
+    int i;
+    for(i=0;i<=225;i++)
+    {
+        printf("ASCII value of character %c=%d\n",i,i);
+    }
+
+    return 0;
+}
+6.	Write a C program to find one's complement of a binary number.
+#include <stdio.h>
+#define SIZE 8
+
+void main()
+{
+    char binary[SIZE+1],onescomp[SIZE+1];
+    int i;
+    printf("enter %d bit binary value:\n",SIZE);
+    scanf("%s",binary);
+    printf("enter the binary number:\n");
+    scanf("%s",binary);
+    printf("the ones complement:\n");
+    for(i=0;i<SIZE;i++)
+    {
+        if(binary[i]=='1')
+        onescomp[i]='0';
+        else if(binary[i]=='0')
+        onescomp[i]='1';
+        
+    }
+    onescomp[SIZE]='\0';
+    printf("%s",onescomp);
+    
+}
+7.	Write a C program to find two's complement of a binary number.
+#include <stdio.h>  
+int main()  
+{  
+   int n;  
+   printf("Enter the number of bits do you want to enter :");  
+   scanf("%d",&n);  
+   char binary[n+1];     
+   char onescomplement[n+1];    
+   char twoscomplement[n+1];   
+   int carry=1;   
+   printf("\nEnter the binary number : ");  
+   scanf("%s", binary);  
+   printf("%s", binary);  
+   printf("\nThe ones complement of the binary number is :");  
+     
+     
+   for(int i=0;i<n;i++)  
+   {  
+       if(binary[i]=='0')  
+       onescomplement[i]='1';  
+       else if(binary[i]=='1')  
+       onescomplement[i]='0';  
+   }  
+   onescomplement[n]='\0';  
+   printf("%s",onescomplement);  
+    
+  
+printf("\nThe twos complement of a binary number is : ");  
+  
+  
+for(int i=n-1; i>=0; i--)  
+    {  
+        if(onescomplement[i] == '1' && carry == 1)  
+        {  
+            twoscomplement[i] = '0';  
+        }  
+        else if(onescomplement[i] == '0' && carry == 1)  
+        {  
+            twoscomplement[i] = '1';  
+            carry = 0;  
+        }  
+        else  
+        {  
+            twoscomplement[i] = onescomplement[i];  
+        }  
+    }  
+twoscomplement[n]='\0';  
+printf("%s",twoscomplement);  
+return 0;  
+}
+8.	Write a C program to convert Binary to Octal number system.
+
+#include <stdio.h>
+
+ void main()
+{
+   int octalconstant[]={0,1,10,11,100,101,111};
+   long long binary,octal;
+   int digit,place,i;
+   
+   octal=0;
+   place=1;
+   printf("enter the binary number:\n");
+   scanf("%lld",&binary);
+   
+   while(binary!=0)
+   {
+       digit=binary%1000;
+   
+   for(i=0;i<=8;i++)
+   {
+       if(octalconstant[i]==digit)
+       {
+           
+           octal=(i*place)+octal;
+           break;
+       }
+        
+   }
+   binary/=1000;
+   place*=10;
+   }
+   printf("the octal number system:%lld",octal);
+   
+}
+
+9.	Write a C program to convert Binary to Decimal number system.
+
+#include <stdio.h>
+#include<math.h>
+
+int main()
+{
+    long int n,x=0,i,a;
+    printf("enter the binary number:");
+    scanf("%ld",&n);
+    printf("decimal number of %ld:",n);
+    for(i=0;n!=0;++i)
+    {
+        a=n%10;
+        x=(a)*(pow(2,i))+x;
+        n/=10;
+        
+    }
+    printf("%ld",x);
+    return 0;
+} 
+10.	Write a C program to convert Binary to Hexadecimal number system.
+
+#include <stdio.h>
+
+int main()
+{
+   long int binary,hexanum=0,rem,i=1;
+   printf("enter the binary number:\n");
+   scanf("%ld",&binary);
+   while(binary!=0)
+   {
+       rem=binary%10;
+       hexanum=hexanum+rem*i;
+       i=i*2;
+       binary=binary/10;
+   }
+   printf("the hexadecimal number=%ld",hexanum);
+   return 0;
+} 
+11.	Write a C program to convert Octal to Binary number system.
+
+#include <stdio.h>
+
+void main()
+{
+  int octalconstant[]={0,1,10,11,100,101,110,111};
+  long int octal=0,binary;
+  int rem,place=1;
+  printf("enter octal number:\n");
+  scanf("%ld",&octal);
+  while(octal!=0)
+  {
+      rem=octal%10;
+      binary=(octalconstant[rem]*place)+binary;
+      octal/=10;
+      place*=1000;
+  }
+  printf("binary value=%ld",binary);
+  
+}
+12.	Write a C program to convert Octal to Decimal number system.
+
+#include <stdio.h>
+#include<math.h>
+
+int main()
+{
+  long int octal,decimal=0;
+  int rem,i=0;
+  printf("enter the octal number:\n");
+  scanf("%ld",&octal);
+  while(octal!=0)
+  {
+      rem=octal%10;
+      decimal=(rem*pow(8,i++))+decimal;
+      octal/=10;
+  }
+  printf("decimal value =%ld",decimal);
+}
+  
+13.	Write a C program to convert Octal to Hexadecimal number system. 
+#include <stdio.h>  
+#include<string.h>  
+int main()  
+{  
+  int octaltobinary[]={0,1,10,11,100,101,110,111};  
+  char hexadecimal[10];  
+   char hex[10];  
+  long int binary=0;  
+  int octal;  
+  int rem=0;  
+  int position=1;  
+  int len=0;  
+   int k=0;  
+  printf("Enter a octal number");  
+  scanf("%d",&octal);     
+while(octal!=0)  
+  {  
+      rem=octal%10;  
+      binary=octaltobinary[rem]*position+binary;  
+      octal=octal/10;  
+      position=position*1000;  
+  }  
+  printf("The binary number is : %ld",binary);   
+  while(binary > 0)  
+    {  
+        rem = binary % 10000;  
+        switch(rem)  
+        {  
+            case 0:  
+                strcat(hexadecimal, "0");  
+                break;  
+            case 1:  
+                strcat(hexadecimal, "1");  
+                break;  
+            case 10:  
+                strcat(hexadecimal, "2");  
+                break;  
+            case 11:  
+                strcat(hexadecimal, "3");  
+                break;  
+            case 100:  
+                strcat(hexadecimal, "4");  
+                break;  
+            case 101:  
+                strcat(hexadecimal, "5");  
+                break;  
+            case 110:  
+                strcat(hexadecimal, "6");  
+                break;  
+            case 111:  
+                strcat(hexadecimal, "7");  
+                break;  
+            case 1000:  
+                strcat(hexadecimal, "8");  
+                break;  
+            case 1001:  
+                strcat(hexadecimal, "9");  
+                break;  
+            case 1010:  
+                strcat(hexadecimal, "A");  
+                break;  
+            case 1011:  
+                strcat(hexadecimal, "B");  
+                break;  
+            case 1100:  
+                strcat(hexadecimal, "C");  
+                break;  
+            case 1101:  
+                strcat(hexadecimal, "D");  
+                break;  
+            case 1110:  
+                strcat(hexadecimal, "E");  
+                break;  
+            case 1111:  
+                strcat(hexadecimal, "F");  
+            break;  
+        }  
+len=len+1;  
+        binary /= 10000;  
+    }  
+  for(int i=len-1;i>=0;i--)  
+{  
+    hex[k]=hexadecimal[i];  
+    k++;  
+}  
+hex[len]='\0';  
+printf("\nThe hexadecimal number is :");  
+for(int i=0; hex[i]!='\0';i++)  
+{  
+    printf("%c",hex[i]);  
+}  
+  
+    return 0;  
+}  
+14.	Write a C program to convert Decimal to Binary number system. 
+#include <stdio.h>
+
+int main()
+{
+    int n,i,a[i];
+    printf("enter decimal number:");
+    scanf("%d",&n);
+    for(i=0;n>0;i++)
+    {
+        a[i]=n%2;
+        n/=2;
+        
+    }
+    printf("\nbinary number=%d",a[i]);
+    for(i=i-1;i>=0;i--)
+    {
+        printf("%d",a[i]);
+    }
+    return 0;
+}
+15.	Write a C program to convert Decimal to Octal number system.
+#include <stdio.h>
+
+int main()
+{
+    int n,i,a[i];
+    printf("enter the decimal number:");
+    scanf("%d",&n);
+    for(i=0;n>0;i++)
+    {
+        a[i]=n%8;
+        n/=8;
+    }
+    printf("the octal number=");
+    for(i=i-1;i>=0;i--)
+    {
+        printf("%d",a[i]);
+    }
+    return 0;
+} 
+16.	Write a C program to convert Decimal to Hexadecimal number system.
+#include <stdio.h>
+
+void main()
+{
+    long int decnum,i,temp=0,rem=0;
+    char hex[32];
+    printf("enterr the decimal number:");
+    scanf("%ld",&decnum);
+    while(decnum>0)
+    {
+        rem=decnum%16;
+        
+        switch(rem)
+        {
+            case 10:
+            hex[temp]='A';break;
+            case 11:
+            hex[temp]='B';break;
+            case 12:
+            hex[temp]='C';break;
+            case 13:
+            hex[temp]='D';break;
+            case 14:
+            hex[temp]='E';break;
+            case 15:
+            hex[temp]='F';break;
+            default:
+            hex[temp]=(rem)+0*30;
+            
+        }
+        decnum/=16;
+        temp++;
+    }
+    printf("hexadecimal number=");
+    for(temp=temp-1;temp>=0;temp--)
+    {
+        printf("%c",hex[temp]);
+    }
+  }
+17.	Write a C program to convert Hexadecimal to Binary number system. 
+#include <stdio.h>
+#include <string.h>
+
+void main()
+{
+    char hex[17];
+    int i=0;
+    printf("enter the hexadecimal value:");
+    scanf("%s",&hex);
+    
+    while(hex[i])
+    {
+        switch(hex[i])
+        {
+            case '0':
+            printf("0000");
+            break;
+            case '1':
+            printf("0001");
+            break;
+            case '2':
+            printf("0010");
+            break;
+            case '3':
+            printf("0011");
+            break;
+            case '4':
+            printf("0100");
+            break;
+            case '5':
+            printf("0101");
+            break;
+            case '6':
+            printf("0110");
+            break;
+            case '7':
+            printf("0111");
+            break;
+            case '8':
+            printf("1000");
+            break;
+            case '9':
+            printf("1001");
+            break;
+            case 'A':
+            printf("1010");
+            break;
+            case 'B':
+            printf("1011");
+            break;
+            case 'C':
+            printf("1100");
+            break;
+            case 'D':
+            printf("1101");
+            break;
+            case 'E':
+            printf("1110");
+            break;
+            case 'F':
+            printf("1111");
+            break;
+            
+        }
+        i++;
+    }
+}
+18.	Write a C program to convert Hexadecimal to Octal number system. 
+#include <stdio.h>
+#include <string.h>
+
+void main()
+{
+    char hex[17];
+    long long octal,bin,place;
+    int i=0,rem,var;
+    printf("enter hexadecimal number:");
+    scanf("%s",&hex);
+    octal=0ll;
+    bin=0ll;
+    place=0ll;
+    while(hex[i])
+    {
+        bin=bin*place;
+        switch(hex[i])
+        {
+            case '0':
+            bin+=0000;
+            break;
+            case '1':
+            bin+=0001;
+            break;
+            case '2':
+            bin+=0010;
+            case '3':
+            bin+=0011;
+            break;
+            case '4':
+            bin+=0100;
+            break;
+            case '5':
+            bin+=0101;
+            break;
+            case '6':
+            bin+=0110;
+            break;
+            case '7':
+            bin+=0111;
+            break;
+            case '8':
+            bin+=1000;
+            break;
+            case '9':
+            bin+=1001;
+            break;
+            case 'A':
+            bin+=1010;
+            break;
+            case 'B':
+            bin+=1011;
+            break;
+            case 'C':
+            bin+=1100;
+            break;
+            case 'D':
+            bin+=1101;
+            break;
+            case 'E':
+            bin+=1110;
+            break;
+            case 'F':
+            bin+=1111;
+            break;
+            default:
+            printf("invalid");
+        }
+        i++;
+        place=10000;
+    }
+    place=1;
+    while(bin>0)
+    {
+        rem=bin%1000;
+        switch(rem)
+        {
+            case 0:
+            var=0;
+            break;
+            case 1:
+            var=1;
+            break;
+            case 10:
+            var=2;
+            break;
+            case 11:
+            var=3;
+            break;
+            case 100:
+            var=4;
+            break;
+            case 101:
+            var=5;
+            break;
+            case 110:
+            var=6;
+            break;
+            case 111:
+            var=7;
+            break;
+            
+        }
+        octal=(place*var)+octal;
+        place*=10;
+        bin/=1000;
+    }
+    printf("the hexadecimal number is=%s\n",hex);
+    printf("the octal value=%lld",octal);
+}
+19.	Write a C program to convert Hexadecimal to Decimal number system
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+   int hexanum,rem,count=0,decnum=0;
+   printf("enter the hexadecimal number:");
+   scanf("%d",&hexanum);
+   while(hexanum>0)
+   {
+       rem=hexanum%10;
+       decnum=decnum+rem*pow(16,count);
+       hexanum/=10;
+       count++;
+   }
+   printf("the decimal value =%d",decnum);
+   return 0;
+}
